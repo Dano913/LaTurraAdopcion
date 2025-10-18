@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>La Turra</title>
+      <style>
+        body {
+          margin: 0;
+          min-height: 100vh;
+          background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                      url('assets/portada.jpg') center/cover fixed no-repeat;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          width: 100%;
+        }
+
+        nav {
+          display: flex;
+          padding: 10px;
+          position: absolute;
+          width: auto;
+          margin: 0 auto;
+          top: 0;
+          z-index: 2;
+          height: 100vh;
+
+          h1 {
+            margin: 0 auto;
+            font-size: clamp(50px, 10vw, 140px);
+            margin-bottom: clamp(50px, 20vw, 300px);
+            margin-top: 20vw;
+            width: clamp(200px, 90%, 1200px);
+            text-align: center;
+            color: rgb(34, 34, 34);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.753);
+            align-self: end;
+          }
+
+          details {
+            position: absolute;
+            right: 1rem;
+            top: 40px;
+
+            div {
+              display: flex;
+              flex-direction: column;
+              background-color: rgba(158, 241, 124, 0.411);
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+              margin-top: 5px;
+              font-weight: 900;
+            }
+
+            a {
+              padding: 10px;
+              text-decoration: none;
+              color: #333;
+              border-radius: 5px;
+              transition: background-color 0.2s ease, color 0.2s ease;
+            }
+
+            a:hover {
+              background-color: #4CAF50;
+              color: white;
+            }
+          }   
+          
+          summary {
+            background-color: #2d662f;
+            color: white;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            list-style: none;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            span {
+              font-size: 30px;
+            }
+          }
+        }
+
+        section {
+          width: 85%;
+          margin: 0 auto;
+          margin-top: 50px;
+          background: #0000005b;
+          border-radius: 10px;
+          color: #fff;
+          padding: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          z-index: 1;
+          font-family: Arial, sans-serif;
+        }
+
+        section:nth-of-type(1) {
+          width: 100%;
+          height: 100vh;
+          background: none;
+          padding: 0;
+          border-radius: 0;
+          margin-top: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            margin: 0 auto;
+          }
+        }
+
+        section:nth-of-type(2) {
+          flex-direction: column;
+          justify-content: flex-start;
+
+          h2 {
+            text-align: center;
+            color: #134609;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.753);
+            font-size: 40px;
+            margin: 0 auto 50px;
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+
+            li {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              margin-bottom: 20px;
+
+              h3 {
+                margin: 0;
+                font-size: 30px;
+              }
+
+              p {
+                margin: 5px 30px 10px;
+                font-size: 25px;
+                line-height: 35px;
+              }
+              details {
+                margin: 5px 30px;
+
+                summary {
+                  cursor: pointer;
+                  font-weight: bold;
+                  padding: 5px 0;
+                  font-size: 20px;
+                }
+
+                ul {
+                  font-size: 25px;
+                  list-style: none;
+                  display: flex;
+                  flex-direction: row;
+                  gap: 50px;
+                  overflow-x: auto;
+                  padding: 10px 0;
+                  border-radius: 8px;
+                  white-space: nowrap;
+                  margin-top: 20px;
+
+                  li {
+                    text-align: center;
+                    min-width: 200px;
+
+                    img {
+                      width: 200px;
+                      height: 200px;
+                      object-fit: cover;
+                      border-radius: 8px;
+                      display: block;
+                      margin-bottom: 5px;
+                    }
+                  }
+                }
+
+                ul::-webkit-scrollbar {
+                  height: 12px;
+                }
+                ul::-webkit-scrollbar-track {
+                  background: #f0f0f0;
+                  border-radius: 8px;
+                }
+
+                ul::-webkit-scrollbar-thumb {
+                  background-color: #4CAF50;
+                  border-radius: 8px;
+                  border: 3px solid #f0f0f0;
+                }
+              }
+            }
+            li:nth-child(1) h3 {
+              color: #ffd166;
+            }
+            li:nth-child(2) h3 {
+              color: #a29bfe;
+            }
+            li:nth-child(3) h3 {
+              color: #55efc4;
+            }
+          }
+        }
+
+        section:nth-of-type(3) {
+          flex-direction: column;
+          height: auto;
+
+          h2 {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto 40px auto;
+            font-size: 40px;
+            color: #134609;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.753);
+          }
+
+          table {
+            color: #fff;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-family: sans-serif;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+
+            th, td {
+              padding: 10px 12px;
+              border: 1px solid #555;
+              text-align: left;
+            }
+
+            tr td:nth-of-type(6) {
+              padding: 0px 12px;
+            }
+
+            thead tr {
+              background-color: #1c1c1c50;
+            }
+
+            tbody tr:nth-child(odd) {
+              background-color: #2e2e2e50;
+            }
+
+            tbody tr:nth-child(even) {
+              background-color: #3a3a3a50;
+            }
+
+            a {
+              color: #0095ff;
+              text-decoration: none;
+              transition: color 0.2s ease;
+              padding: 0px;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+
+              span {
+                font-size: 30px;
+                padding-bottom: 6px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+        }
+
+        section:nth-of-type(4) {
+          justify-content: center;
+          align-items: center;
+
+          form {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            background: #0000005b;
+            color: #fff;
+          }
+
+          h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #134609;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.753);
+            margin-bottom: 20px;
+          }
+
+          label {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-weight: 900;
+            color: #fff;
+          }
+
+          input,
+          select,
+          textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+          }
+
+          textarea {
+            resize: vertical;
+          }
+
+          button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+          }
+
+          button:hover {
+            background-color: #43a047;
+          }
+        }
+
+        footer {
+          margin-top: 50px;
+          width: 100%;
+          background-color: #0000005b;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 20px 0;
+          color: #333;
+          text-align: center;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+
+          div:nth-of-type(1) {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bolder;
+
+            p {
+              margin: 0;
+            }
+          }
+
+          div:nth-of-type(2) {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+
+            a {
+              text-decoration: none;
+              font-size: 20px;
+              transition: opacity 0.3s ease;
+            }
+
+            a.facebook { 
+              color: #0b3fad; 
+            }
+
+            a.instagram { 
+              color: #E1306C; 
+            }
+
+            a.twitter { 
+              color: #1DA1F2; 
+            }
+
+            a:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+      </style>
+  </head>
+  <body>
+
+    <nav>
+      <h1>Centro de Adopción La Turra</h1>
+      <details>
+        <summary><span>+</span> CENTROS</summary>
+        <div>
+          <a href="https://adoptale.com" target="_blank">Adoptale</a>
+          <a href="https://faunaencasa.com" target="_blank">Fauna en Casa</a>
+          <a href="https://sosgredos.org" target="_blank">S.O.S. Gredos</a>
+          <a href="https://anyba.org" target="_blank">Anyba</a>
+          <a href="https://kerubi.es" target="_blank">Kerubi</a>
+        </div>
+      </details>
+    </nav>
+
+    <section>
+      <img src='assets/portada.jpg' alt='Descripción de la imagen'>
+    </section>
+
+    <section>
+      <h2>Animales disponibles para adopción</h2>
+      <ul>
+        <li>
+          <h3>Perros</h3>
+          <p>
+            Amigos <strong>leales</strong>, llenos de energía y cariño, nuestros perros están esperando a quienes les den un hogar donde <strong>jugar, pasear y compartir</strong> momentos inolvidables cada día.
+          </p>
+          <details>
+            <summary>Disponibles</summary>
+            <ul>
+              <li><img src="assets/mulder.jpg" alt="Mulder"><span>Mulder</span></li>
+              <li><img src="assets/bertino.jpg" alt="Bertiño" style="object-position:left center;"><span>Bertiño</span></li>
+              <li><img src="assets/tyson.jpg" alt="Tyson"><span>Tyson</span></li>
+              <li><img src="assets/spyke.jpg" alt="Spyke"><span>Spyke</span></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <h3>Gatos</h3>
+          <p>
+            Misteriosos y encantadores, nuestros gatos disfrutan de la <strong>calma</strong> y la <strong>compañía a su manera</strong>. Con ellos, cada rincón de tu casa puede convertirse en un lugar de <strong>ternura y curiosidad</strong>.
+          </p>
+          <details>
+            <summary>Disponibles</summary>
+            <ul>
+              <li><img src="assets/britney.jpg" alt="Britney"><span>Britney</span></li>
+              <li><img src="assets/phoebe.jpg" alt="Phoebe"><span>Phoebe</span></li>
+              <li><img src="assets/santoro.jpg" alt="Santoro"><span>Santoro</span></li>
+              <li><img src="assets/lamont.jpg" alt="Lamont"><span>Lamont</span></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <h3>Loros</h3>
+          <p>
+            Con <strong>plumas brillantes</strong> y un carácter curioso, nuestros loros llenan de vida cualquier espacio. Son <strong>compañeros inteligentes</strong> que <strong>aman interactuar</strong>, aprender y hacerte sonreír cada día.
+          </p>
+          <details>
+            <summary>Disponibles</summary>
+            <ul>
+              <li><img src="assets/monalisa.jpg" alt="Monalisa"><span>Lilith</span></li>
+              <li><img src="assets/chestermax.jpg" alt="Chester y Max"><span>Chester y Max</span></li>
+              <li><img src="assets/minerva.jpg" alt="Minerva"><span>Minerva</span></li>
+              <li><img src="assets/martin.jpg" alt="Martin"><span>Martin</span></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Registro de adopciones pasadas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Animal</th>
+            <th>Especie</th>
+            <th>Adoptante</th>
+            <th>Ciudad</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20250912-02</td>
+            <td>2025-09-12</td>
+            <td>Atenea</td>
+            <td>Perro</td>
+            <td>María</td>
+            <td>A Coruña</td>
+            <td><a href="assets/atenea.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250905-01</td>
+            <td>2025-09-05</td>
+            <td>Rocky</td>
+            <td>Perro</td>
+            <td>Ana</td>
+            <td>Ourense</td>
+            <td><a href="assets/rocky.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250823-03</td>
+            <td>2025-08-23</td>
+            <td>Henry</td>
+            <td>Gato</td>
+            <td>Carlos</td>
+            <td>Zaragoza</td>
+            <td><a href="assets/henry.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250818-02</td>
+            <td>2025-08-18</td>
+            <td>Tina</td>
+            <td>Gato</td>
+            <td>Javier</td>
+            <td>Segovia</td>
+            <td><a href="assets/tina.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250807-01</td>
+            <td>2025-08-07</td>
+            <td>Kiko</td>
+            <td>Loro</td>
+            <td>Elena</td>
+            <td>Irún</td>
+            <td><a href="assets/kiko.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250730-04</td>
+            <td>2025-07-30</td>
+            <td>Lewis</td>
+            <td>Loro</td>
+            <td>Lucía</td>
+            <td>Pontevedra</td>
+            <td><a href="assets/lewis.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250728-03</td>
+            <td>2025-07-28</td>
+            <td>Kira</td>
+            <td>Perro</td>
+            <td>Raúl</td>
+            <td>León</td>
+            <td><a href="assets/kira.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250719-02</td>
+            <td>2025-07-19</td>
+            <td>Mandarina</td>
+            <td>Gato</td>
+            <td>Patricia</td>
+            <td>Pontevedra</td>
+            <td><a href="assets/mandarina.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250718-01</td>
+            <td>2025-07-18</td>
+            <td>Orlen</td>
+            <td>Loro</td>
+            <td>Sergio</td>
+            <td>Palencia</td>
+            <td><a href="assets/orlen.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250629-04</td>
+            <td>2025-06-29</td>
+            <td>Tyler</td>
+            <td>Perro</td>
+            <td>Laura</td>
+            <td>San Sebastián</td>
+            <td><a href="assets/tyler.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250626-03</td>
+            <td>2025-06-26</td>
+            <td>Chloe</td>
+            <td>Gato</td>
+            <td>Diego</td>
+            <td>Vigo</td>
+            <td><a href="assets/chloe.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250614-02</td>
+            <td>2025-06-14</td>
+            <td>Pepe</td>
+            <td>Loro</td>
+            <td>Raquel</td>
+            <td>Lugo</td>
+            <td><a href="assets/pepe.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250611-01</td>
+            <td>2025-06-11</td>
+            <td>Winter</td>
+            <td>Perro</td>
+            <td>Fernando</td>
+            <td>Oviedo</td>
+            <td><a href="assets/winter.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250528-02</td>
+            <td>2025-05-28</td>
+            <td>Negrita</td>
+            <td>Gato</td>
+            <td>Isabel</td>
+            <td>Gijón</td>
+            <td><a href="assets/negrita.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+          <tr>
+            <td>20250519-01</td>
+            <td>2025-05-19</td>
+            <td>Rio</td>
+            <td>Loro</td>
+            <td>Mario</td>
+            <td>Lisboa</td>
+            <td><a href="assets/rio.jpg"><span>&#128065;</span>Ver</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <form action="/enviar-formulario" method="POST">
+        <h2>Formulario de Adopción</h2>
+
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" required>
+
+        <label for="animal">Animal que deseas adoptar</label>
+        <select id="animal" name="animal" required>
+          <option value="">--Selecciona--</option>
+          <option value="perro">Perro</option>
+          <option value="gato">Gato</option>
+          <option value="loro">Loro</option>
+        </select>
+
+        <label for="experiencia">¿Tienes experiencia con animales?</label>
+        <textarea id="experiencia" name="experiencia" rows="4" placeholder="Cuéntanos sobre tu experiencia..."></textarea>
+
+        <label for="condiciones">Condiciones de tu hogar</label>
+        <textarea id="condiciones" name="condiciones" rows="4" placeholder="Espacio, otros animales, etc."></textarea>
+
+        <button type="submit">Enviar Solicitud</button>
+      </form>
+    </section>
+
+    <footer>
+      <div>
+        <p>© 2025 Centro de Adopción La Turra</p>
+        <p>Todos los derechos reservados</p>
+      </div>
+      <div>
+        <a href="https://facebook.com/laturradopcion" target="_blank" class="facebook">Facebook</a>
+        <a href="https://instagram.com/laturradopcion" target="_blank" class="instagram">Instagram</a>
+        <a href="https://twitter.com/laturradopcion" target="_blank" class="twitter">Twitter</a>
+      </div>
+    </footer>
+  </body>
+</html>
